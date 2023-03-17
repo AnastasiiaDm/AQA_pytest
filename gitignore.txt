@@ -1,3 +1,3 @@
 .idea/
 venv/
-1_first_hw/.pytest_cache/
+1_first_hw/__pycache__/
