@@ -1,2 +1,3 @@
 .idea/
 venv/
+1_first_hw/.pytest_cache/
