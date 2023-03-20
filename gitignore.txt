@@ -1,2 +1,4 @@
 .idea/
 venv/
+15_fifteenth_hw/__pycache__/
+16_sixteenth_hw/__pycache__/
