@@ -8,6 +8,11 @@ def create_female_age_30():
 
 
 @pytest.fixture()
+def create_male_age_40():
+    return Human('Kun', 40, 'male')
+
+
+@pytest.fixture()
 def create_human_with_params():
     def __create_human(name: str, age: int, gender: str):
         return Human(name, age, gender)
