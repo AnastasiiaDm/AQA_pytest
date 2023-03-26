@@ -2,7 +2,7 @@ import pytest
 from seventeenth_hw.utilities.config_reader import get_application_url, get_browser_id
 from seventeenth_hw.utilities.browser_factory import browser_factory
 
-from seventeenth_hw.page_objects.main_page import MainPage
+from seventeenth_hw.page_objects.main_page_pack.main_page import MainPage
 
 
 @pytest.fixture()
