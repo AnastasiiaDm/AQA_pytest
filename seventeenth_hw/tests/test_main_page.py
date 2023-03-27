@@ -9,6 +9,7 @@ Write TCs for your pages (At least 5 TCs per page).
 Mark smoke test cases and regression Tcs
 """
 import pytest
+import time
 
 from seventeenth_hw.utilities.config_reader import get_search_key, get_invalid_search_key
 
@@ -36,10 +37,24 @@ def test_search_invalid_items_by_search_field(open_main_page):
     assert search_page.is_warning_displayed(), 'Search page warning is not displayed'
     assert search_page.is_search_result_counter_invisible(), 'Search result counter is displayed'
 
+
 @pytest.mark.smoke
 def test_open_empty_cart(open_main_page):
     main_page = open_main_page
     search_page = main_page.click_cart_button()
     assert search_page.is_warning_displayed(), "Empty cart warning is not displayed"
 
-# main_page.set_email(get_user_creds()[0])
+
+@pytest.mark.smoke
+def test_login_page(open_main_page):
+    main_page = open_main_page
+    login_page = main_page.click_login_button()
+    assert login_page.is_submit_login_button_visible(), "Login button is not displayed"
+
+
+@pytest.mark.smoke
+def test_go_to_iphone_item_page(open_main_page):
+    main_page = open_main_page
+    iphone_items = main_page.show_iphone_items()
+    time.sleep(3)
+    assert iphone_items.is_iphone_items_url_matches(), "Url do not match"

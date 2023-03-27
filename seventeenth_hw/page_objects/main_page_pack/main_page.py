@@ -1,7 +1,8 @@
 from seventeenth_hw.page_objects.cart_page_pack.cart_page import CartPage
+from seventeenth_hw.page_objects.login_page_pack.login_page import LoginPage
 from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.page_objects.search_page_pack.search_page import SearchPage
-from seventeenth_hw.utilities.config_reader import get_application_url
+from seventeenth_hw.utilities.config_reader import get_application_url, get_iphone_items_url
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
 
@@ -36,4 +37,16 @@ class MainPage(BasePage):
         self._click(self.__main_page_locator.cart_button)
         return CartPage(self.browser)
 
+    def click_login_button(self):
+        self._click(self.__main_page_locator.login_button)
+        return LoginPage(self.browser)
 
+    # def click_iphone_items_button(self):
+    #     self._click(self.__main_page_locator.iphone_items_button)
+    #     return self
+
+    def is_iphone_items_url_matches(self):
+        return self._wait_until_url_matches(get_iphone_items_url())
+
+    def show_iphone_items(self):
+        return self._show_dropdown_by_js(self.__main_page_locator.apple_store_button)

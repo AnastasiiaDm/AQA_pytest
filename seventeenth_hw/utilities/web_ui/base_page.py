@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
 
 
 class BasePage:
@@ -40,3 +41,9 @@ class BasePage:
     def _get_text(self, locator):
         element = self._wait_until_element_located(locator)
         return element.text
+
+    # def _move_mouse_to_locator(self, locator):
+    #     webdriver.ActionChains(self.browser).move_to_element(locator).perform()
+
+    def _show_dropdown_by_js(self, locator):
+        return self.browser.execute_script('arguments[0]', self._wait_until_element_located(locator))

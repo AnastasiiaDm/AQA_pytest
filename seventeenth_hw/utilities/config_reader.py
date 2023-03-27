@@ -1,6 +1,7 @@
 import configparser
+from constants import ROOT_DIR
 
-abs_path = '/Users/nasik/PycharmProjects/AQA_pytest/seventeenth_hw/configurations/configuration.ini'
+abs_path = f'{ROOT_DIR}/seventeenth_hw/configurations/configuration.ini'
 config = configparser.RawConfigParser()
 config.read(abs_path)
 
@@ -44,3 +45,7 @@ def get_manager_application_form_text_key():
 
 def get_invalid_discount_key():
     return config.get('discount_data', 'invalid_key')
+
+
+def get_iphone_items_url():
+    return config.get('add_data', 'iphone_items_url')

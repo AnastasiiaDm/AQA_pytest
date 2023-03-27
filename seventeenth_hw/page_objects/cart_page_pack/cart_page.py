@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from seventeenth_hw.page_objects.cart_page_pack.cart_page_locators import CartPageLocators
 from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.utilities.config_reader import get_application_url
