@@ -1,7 +1,6 @@
 import pytest
 
-from seventeenth_hw.utilities.config_reader import get_search_key, get_invalid_search_key, get_search_id_key, \
-    get_invalid_discount_key
+from seventeenth_hw.utilities.config_reader import get_search_id_key, get_invalid_discount_key
 
 
 @pytest.mark.regressoin

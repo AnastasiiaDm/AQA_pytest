@@ -13,8 +13,11 @@ class MainPageLocators:
         self.__alert_warning = Locator(By.XPATH, "//*[@class='alert alert-warning']")
         self.__header_logo = Locator(By.XPATH, "//*[@id='header_logo']")
         self.__iphone_items_button = Locator(By.XPATH,
-                                           "//*[@class='submenu-level-0_18 sub fullwidth clearfix']//*[@title='iPhone']")
-        self.__apple_store_button = Locator(By.XPATH, "//*[@title='Apple Store']")
+                                             "//*[@class='submenu-level-0_18 sub fullwidth clearfix']//*[@title='iPhone']")
+        self.__promo_block = Locator(By.XPATH, "//*[@class='row promo-block-at-home']")
+        self.__header_contact_button = Locator(By.XPATH,
+                                               "//*[@class='sf-menu clearfix menu-content']//*[contains(@href, 'contact-us')]")
+
     @property
     def search_input(self):
         return self.__search_input.get_locator()
@@ -48,5 +51,9 @@ class MainPageLocators:
         return self.__iphone_items_button.get_locator()
 
     @property
-    def apple_store_button(self):
-        return self.__apple_store_button.get_locator()
+    def header_contact_button(self):
+        return self.__header_contact_button.get_locator()
+
+    @property
+    def promo_block(self):
+        return self.__promo_block.get_locator()

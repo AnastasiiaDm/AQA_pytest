@@ -49,3 +49,7 @@ def get_invalid_discount_key():
 
 def get_iphone_items_url():
     return config.get('add_data', 'iphone_items_url')
+
+
+def get_contact_url():
+    return config.get('add_data', 'contact_url')

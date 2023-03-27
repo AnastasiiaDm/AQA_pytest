@@ -25,7 +25,7 @@ def test_submit_empty_fields(open_main_page):
     main_page = open_main_page
     submit = main_page.click_search_submit().click_manager_application_button().click_submit_button()
     assert submit.is_form_visible(), "Manager application form is not displayed"
-    assert submit.are_required_fields_unfilled(), "Required fields ane not displayed"
+    assert submit.are_required_fields_unfilled(), "Required fields are not displayed"
 
 
 @pytest.mark.smoke
@@ -52,7 +52,7 @@ def test_exist_name_text_uk(open_main_page):
 def test_exist_phone_text_uk(open_main_page):
     main_page = open_main_page
     actual_text = main_page.click_search_submit().click_manager_application_button().get_phone_text()
-    assert actual_text == "Номер телефону:", "Manager application form name text is invalid or not in Ukrainian"
+    assert actual_text == "Номер телефону:", "Manager application form phone text is invalid or not in Ukrainian"
 
 
 @pytest.mark.regression
@@ -60,4 +60,5 @@ def test_exist_phone_text_uk(open_main_page):
 def test_exist_comment_text_uk(open_main_page):
     main_page = open_main_page
     actual_text = main_page.click_search_submit().click_manager_application_button().get_comment_text()
-    assert actual_text == "Напишіть товар, який ви шукайте:", "Manager application form name text is invalid or not in Ukrainian"
+    assert actual_text == "Напишіть товар, який ви шукайте:", \
+        "Manager application form comment text is invalid or not in Ukrainian"

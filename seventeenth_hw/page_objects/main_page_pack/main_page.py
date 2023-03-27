@@ -2,7 +2,7 @@ from seventeenth_hw.page_objects.cart_page_pack.cart_page import CartPage
 from seventeenth_hw.page_objects.login_page_pack.login_page import LoginPage
 from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.page_objects.search_page_pack.search_page import SearchPage
-from seventeenth_hw.utilities.config_reader import get_application_url, get_iphone_items_url
+from seventeenth_hw.utilities.config_reader import get_iphone_items_url, get_contact_url
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
 
@@ -18,6 +18,10 @@ class MainPage(BasePage):
     def click_search_submit(self):
         self._click(self.__main_page_locator.search_submit_button)
         return SearchPage(self.browser)
+
+    def click_search_submit_for_main(self):
+        self._click(self.__main_page_locator.search_submit_button)
+        return self
 
     def is_search_result_counter_displayed(self):
         element = self._wait_until_element_visible(self.__main_page_locator.search_result_counter)
@@ -37,16 +41,27 @@ class MainPage(BasePage):
         self._click(self.__main_page_locator.cart_button)
         return CartPage(self.browser)
 
+    def click_cart_button_for_main(self):
+        self._click(self.__main_page_locator.cart_button)
+        return self
+
     def click_login_button(self):
         self._click(self.__main_page_locator.login_button)
         return LoginPage(self.browser)
 
-    # def click_iphone_items_button(self):
-    #     self._click(self.__main_page_locator.iphone_items_button)
-    #     return self
-
     def is_iphone_items_url_matches(self):
         return self._wait_until_url_matches(get_iphone_items_url())
 
-    def show_iphone_items(self):
-        return self._show_dropdown_by_js(self.__main_page_locator.apple_store_button)
+    def click_iphone_items_by_js(self):
+        self._click_by_js(self.__main_page_locator.iphone_items_button)
+        return self
+
+    def is_promo_block_exist(self):
+        return self._wait_until_element_visible(self.__main_page_locator.promo_block)
+
+    def click_header_contact_button(self):
+        self._click(self.__main_page_locator.header_contact_button)
+        return self
+
+    def is_contact_url_matches(self):
+        return self._wait_until_url_matches(get_contact_url())

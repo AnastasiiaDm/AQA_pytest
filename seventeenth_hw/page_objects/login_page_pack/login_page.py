@@ -1,5 +1,4 @@
 from seventeenth_hw.page_objects.login_page_pack.login_page_locators import LoginPageLocators
-from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
 
@@ -52,4 +51,3 @@ class LoginPage(BasePage):
 
     def is_header_logout_button_exist(self):
         return self._wait_until_element_visible(self.__login_locator.header_logout_button)
-
