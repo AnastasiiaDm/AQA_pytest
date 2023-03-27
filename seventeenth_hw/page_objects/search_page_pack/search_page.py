@@ -1,7 +1,6 @@
-from seventeenth_hw.page_objects.main_locators import MainLocators
+from seventeenth_hw.page_objects.cart_page_pack.cart_page import CartPage
+from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.page_objects.manager_application_form.manager_application_form import ManagerApplicationForm
-from seventeenth_hw.page_objects.manager_application_form.manager_application_form_locators import \
-    ManagerApplicationFormLocators
 from seventeenth_hw.page_objects.search_page_pack.search_page_locators import SearchLocators
 from seventeenth_hw.utilities.config_reader import get_application_url
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
@@ -10,11 +9,11 @@ from seventeenth_hw.utilities.web_ui.base_page import BasePage
 class SearchPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
-        self.__main_locator = MainLocators()
+        self.__main_page_locator = MainPageLocators()
         self.__search_locator = SearchLocators()
 
     def click_site_header_logo(self):
-        self._click(self.__main_locator.header_logo)
+        self._click(self.__main_page_locator.header_logo)
         return self
 
     def is_main_page_url_matches(self):
@@ -29,6 +28,10 @@ class SearchPage(BasePage):
 
     def get_item_list_located(self):
         return self._wait_until_all_elements_located(self.__search_locator.item_list)
+
+    def click_item(self):
+        self._click(self.__search_locator.item_list)
+        return self
 
     def is_recent_articles_active(self):
         return self._wait_until_element_located(self.__search_locator.recent_articles_active)
@@ -53,3 +56,7 @@ class SearchPage(BasePage):
 
     def is_cart_popup_displayed(self):
         return self._wait_until_element_located(self.__search_locator.cart_popup)
+
+    def click_cart_page_button(self):
+        self._click(self.__search_locator.cart_page_button)
+        return CartPage(self.browser)

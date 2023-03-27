@@ -17,6 +17,7 @@ class SearchLocators:
                                        "//*[@class='sortPagiBar clearfix row']//*[@class='total-compare-val']")
         self.__add_to_cart_button = Locator(By.XPATH, "//*[contains(@class, 'ajax_add_to_cart_button')]")
         self.__cart_popup = Locator(By.XPATH, "//*[@id='layer_cart']/self::*[contains(@style, 'display: block')]")
+        self.__cart_page_button = Locator(By.XPATH, "//*[@class='btn btn-warning button pull-right']/child::span")
 
     @property
     def search_result_key(self):
@@ -56,4 +57,8 @@ class SearchLocators:
 
     @property
     def cart_popup(self):
-        return self.__add_to_cart_button.get_locator()
+        return self.__cart_popup.get_locator()
+
+    @property
+    def cart_page_button(self):
+        return self.__cart_page_button.get_locator()

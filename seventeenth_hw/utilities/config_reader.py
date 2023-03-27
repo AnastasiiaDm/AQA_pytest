@@ -26,6 +26,10 @@ def get_invalid_search_key():
     return config.get('search_data', 'invalid_key')
 
 
+def get_search_id_key():
+    return config.get('search_data', 'search_id_key')
+
+
 def get_manager_application_form_name_key():
     return config.get('application_manager_form_data', 'name_key')
 
@@ -36,3 +40,7 @@ def get_manager_application_form_phone_key():
 
 def get_manager_application_form_text_key():
     return config.get('application_manager_form_data', 'text_key')
+
+
+def get_invalid_discount_key():
+    return config.get('discount_data', 'invalid_key')

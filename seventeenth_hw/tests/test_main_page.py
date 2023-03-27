@@ -25,7 +25,7 @@ def test_search_items_by_search_field(open_main_page):
 def test_search_no_items_by_search_field(open_main_page):
     main_page = open_main_page
     search_page = main_page.click_search_submit()
-    assert search_page.is_search_warning_displayed(), 'Search page warning is not displayed'
+    assert search_page.is_warning_displayed(), 'Search page warning is not displayed'
     assert search_page.is_search_result_counter_invisible(), 'Search result counter is displayed'
 
 
@@ -33,21 +33,13 @@ def test_search_no_items_by_search_field(open_main_page):
 def test_search_invalid_items_by_search_field(open_main_page):
     main_page = open_main_page
     search_page = main_page.set_search_key(get_invalid_search_key()).click_search_submit()
-    assert search_page.is_search_warning_displayed(), 'Search page warning is not displayed'
+    assert search_page.is_warning_displayed(), 'Search page warning is not displayed'
     assert search_page.is_search_result_counter_invisible(), 'Search result counter is displayed'
 
-
-# @pytest.mark.regression
-# def test_go_to_main_page_from_search_result(open_main_page):
-#     main_page = open_main_page
-#     main_page_url = main_page.set_search_key(get_search_key()).click_search_submit().click_site_header_logo()
-#     assert main_page_url.is_main_page_url_matches(), "Url doesnt match"
-#
-#
-# @pytest.mark.smoke
-# def test_open_manager_application_form(open_main_page):
-#     main_page = open_main_page
-#     manager_application_form = main_page.click_search_submit().click_manager_application_button()
-#     assert manager_application_form.is_form_visible(), "Manager application form is not displayed"
+@pytest.mark.smoke
+def test_open_empty_cart(open_main_page):
+    main_page = open_main_page
+    search_page = main_page.click_cart_button()
+    assert search_page.is_warning_displayed(), "Empty cart warning is not displayed"
 
 # main_page.set_email(get_user_creds()[0])

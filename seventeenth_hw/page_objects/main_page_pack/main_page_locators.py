@@ -7,7 +7,11 @@ class MainPageLocators:
         self.__search_input = Locator(By.XPATH, "//*[@id='search_query_top']")
         self.__search_submit_button = Locator(By.XPATH, "//*[@name='submit_search']")
         self.__search_result_counter = Locator(By.XPATH, "//*[@class='heading-counter']")
-        self.__cart_button = Locator(By.XPATH, "//*[@id='cart']")
+        self.__cart_button = Locator(By.XPATH, "//*[@class='title-cart pull-right']")
+        self.__login_button = Locator(By.XPATH, "//*[@class='login']")
+
+        self.__alert_warning = Locator(By.XPATH, "//*[@class='alert alert-warning']")
+        self.__header_logo = Locator(By.XPATH, "//*[@id='header_logo']")
 
     @property
     def search_input(self):
@@ -24,3 +28,15 @@ class MainPageLocators:
     @property
     def cart_button(self):
         return self.__cart_button.get_locator()
+
+    @property
+    def login_button(self):
+        return self.__login_button.get_locator()
+
+    @property
+    def alert_warning(self):
+        return self.__alert_warning.get_locator()
+
+    @property
+    def header_logo(self):
+        return self.__header_logo.get_locator()
