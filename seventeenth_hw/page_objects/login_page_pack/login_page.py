@@ -8,10 +8,12 @@ class LoginPage(BasePage):
         self.__login_locator = LoginPageLocators()
 
     def is_submit_login_button_visible(self):
-        return self._wait_until_element_visible(self.__login_locator.submit_login_button)
+        element = self._wait_until_element_visible(self.__login_locator.submit_login_button)
+        return element.is_displayed()
 
     def is_google_sign_up_button_exist(self):
-        return self._wait_until_element_located(self.__login_locator.google_sign_up)
+        element = self._wait_until_element_located(self.__login_locator.google_sign_up)
+        return element.is_displayed()
 
     def set_login_email(self, key: str):
         self._send_keys(locator=self.__login_locator.login_email_input, value=key)
@@ -23,31 +25,27 @@ class LoginPage(BasePage):
 
     def click_submit_login_button(self):
         self._click(self.__login_locator.submit_login_button)
-        return self
 
     def authorize(self, email: str, password: str):
         self.set_login_email(email)
         self.set_password_email(password)
         self.click_submit_login_button()
-        return self
+        from seventeenth_hw.page_objects.main_page_pack.main_page import MainPage
+        return MainPage(self.browser)
 
     def click_forgot_password_button(self):
         self._click(self.__login_locator.forgot_password_button)
-        return self
+        from seventeenth_hw.page_objects.password_recovery_pack.password_recovery_page import PasswordRecoveryPage
+        return PasswordRecoveryPage(self.browser)
 
     def click_submit_sign_up_button(self):
         self._click(self.__login_locator.submit_sign_up_button)
         return self
 
     def is_invalid_sign_up_alert_visible(self):
-        return self._wait_until_element_visible(self.__login_locator.invalid_sign_up_alert)
+        element = self._wait_until_element_visible(self.__login_locator.invalid_sign_up_alert)
+        return element.is_displayed()
 
-    def is_recover_password_submit_visible(self):
-        return self._wait_until_element_visible(self.__login_locator.recover_password_submit)
 
-    def click_go_to_login_page_button(self):
-        self._click(self.__login_locator.go_to_login_page_button)
-        return self
 
-    def is_header_logout_button_exist(self):
-        return self._wait_until_element_visible(self.__login_locator.header_logout_button)
+

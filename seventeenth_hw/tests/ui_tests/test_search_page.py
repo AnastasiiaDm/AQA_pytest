@@ -56,7 +56,7 @@ def test_click_popular_news(open_main_page):
 def test_is_compare_value_0(open_main_page):
     main_page = open_main_page
     search = main_page.set_search_key(get_search_id_key()).click_search_submit()
-    assert search.is_compare_value_0() == '0', "Compare value not equal 0"
+    assert search.is_compare_value_equals_0() == '0', "Compare value not equal 0"
 
 
 @pytest.mark.smoke
@@ -67,8 +67,6 @@ def test_add_to_cart(open_main_page):
 
 
 @pytest.mark.smoke
-def test_open_cart_page_with_order(open_main_page):
-    main_page = open_main_page
-    search = main_page.set_search_key(get_search_id_key()).click_search_submit().click_add_to_cart_button(). \
-        click_cart_page_button()
-    assert search.is_exist_order_block, "Order block is not displayed"
+def test_open_cart_page_with_order(open_cart_page_with_item):
+    cart_page = open_cart_page_with_item
+    assert cart_page.is_order_block_exist, "Order block is not displayed"

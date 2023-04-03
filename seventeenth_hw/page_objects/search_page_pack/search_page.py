@@ -16,9 +16,6 @@ class SearchPage(BasePage):
         self._click(self.__main_page_locator.header_logo)
         return self
 
-    def is_main_page_url_matches(self):
-        return self._wait_until_url_matches(get_application_url())
-
     def click_manager_application_button(self):
         self._click(self.__search_locator.manager_application_button)
         return ManagerApplicationForm(self.browser)
@@ -34,10 +31,12 @@ class SearchPage(BasePage):
         return self
 
     def is_recent_articles_active(self):
-        return self._wait_until_element_located(self.__search_locator.recent_articles_active)
+        element = self._wait_until_element_visible(self.__search_locator.recent_articles_active)
+        return element.is_displayed()
 
     def is_popular_articles_active(self):
-        return self._wait_until_element_located(self.__search_locator.popular_articles_active)
+        element = self._wait_until_element_visible(self.__search_locator.popular_articles_active)
+        return element.is_displayed()
 
     def click_recent_news_button(self):
         self._click(self.__search_locator.recent_news_button)
@@ -47,7 +46,7 @@ class SearchPage(BasePage):
         self._click(self.__search_locator.popular_news_button)
         return self
 
-    def is_compare_value_0(self):
+    def is_compare_value_equals_0(self):
         return self._get_text(self.__search_locator.compare_value)
 
     def click_add_to_cart_button(self):
@@ -55,8 +54,15 @@ class SearchPage(BasePage):
         return self
 
     def is_cart_popup_displayed(self):
-        return self._wait_until_element_located(self.__search_locator.cart_popup)
+        element = self._wait_until_element_visible(self.__search_locator.cart_popup)
+        return element.is_displayed()
 
     def click_cart_page_button(self):
         self._click(self.__search_locator.cart_page_button)
         return CartPage(self.browser)
+
+    # def add_item_and_open_cart_page(self):
+    #     self.click_add_to_cart_button()
+    #     self.click_cart_page_button()
+    #     return CartPage(self.browser)
+

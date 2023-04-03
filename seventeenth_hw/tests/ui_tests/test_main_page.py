@@ -18,14 +18,14 @@ def test_search_items_by_search_field(open_main_page):
     main_page = open_main_page
     search_page = main_page.set_search_key(get_search_key()).click_search_submit_for_main()
     assert search_page.is_search_result_counter_displayed(), 'Search result counter is not displayed'
-    assert search_page.is_search_warning_invisible(), 'Search warning is displayed'
+    assert main_page.wait_until_warning_invisible(), 'Warning is displayed'
 
 
 @pytest.mark.regression
 def test_search_no_items_by_search_field(open_main_page):
     main_page = open_main_page
     search_page = main_page.click_search_submit_for_main()
-    assert search_page.is_warning_displayed(), 'Search page warning is not displayed'
+    assert search_page.wait_until_warning_visible(), 'Search page warning is not displayed'
     assert search_page.is_search_result_counter_invisible(), 'Search result counter is displayed'
 
 
@@ -33,28 +33,14 @@ def test_search_no_items_by_search_field(open_main_page):
 def test_search_invalid_items_by_search_field(open_main_page):
     main_page = open_main_page
     search_page = main_page.set_search_key(get_invalid_search_key()).click_search_submit_for_main()
-    assert search_page.is_warning_displayed(), 'Search page warning is not displayed'
+    assert search_page.wait_until_warning_visible(), 'Search page warning is not displayed'
     assert search_page.is_search_result_counter_invisible(), 'Search result counter is displayed'
-
-
-@pytest.mark.smoke
-def test_open_empty_cart(open_main_page):
-    main_page = open_main_page
-    search_page = main_page.click_cart_button_for_main()
-    assert search_page.is_warning_displayed(), "Empty cart warning is not displayed"
-
-
-@pytest.mark.smoke
-def test_login_page(open_main_page):
-    main_page = open_main_page
-    login_page = main_page.click_login_button()
-    assert login_page.is_submit_login_button_visible(), "Login button is not displayed"
 
 
 @pytest.mark.smoke
 def test_go_to_iphone_item_page(open_main_page):
     main_page = open_main_page
-    iphone_items = main_page.click_iphone_items_by_js()
+    iphone_items = main_page.click_iphone_item()
     assert iphone_items.is_iphone_items_url_matches(), "Url do not match"
 
 

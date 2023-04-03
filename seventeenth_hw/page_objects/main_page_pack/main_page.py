@@ -2,7 +2,7 @@ from seventeenth_hw.page_objects.cart_page_pack.cart_page import CartPage
 from seventeenth_hw.page_objects.login_page_pack.login_page import LoginPage
 from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.page_objects.search_page_pack.search_page import SearchPage
-from seventeenth_hw.utilities.config_reader import get_iphone_items_url, get_contact_url
+from seventeenth_hw.utilities.config_reader import get_iphone_items_url, get_contact_url, get_application_url
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
 
@@ -27,23 +27,20 @@ class MainPage(BasePage):
         element = self._wait_until_element_visible(self.__main_page_locator.search_result_counter)
         return element.is_displayed()
 
+    def is_search_result_counter_invisible(self):
+        return self._wait_until_element_invisible(self.__main_page_locator.search_result_counter)
+
     def is_warning_displayed(self):
         element = self._wait_until_element_visible(self.__main_page_locator.alert_warning)
         return element.is_displayed()
-
-    def is_search_warning_invisible(self):
-        return self._wait_until_element_invisible(self.__main_page_locator.alert_warning)
-
-    def is_search_result_counter_invisible(self):
-        return self._wait_until_element_invisible(self.__main_page_locator.search_result_counter)
 
     def click_cart_button(self):
         self._click(self.__main_page_locator.cart_button)
         return CartPage(self.browser)
 
-    def click_cart_button_for_main(self):
-        self._click(self.__main_page_locator.cart_button)
-        return self
+    # def click_cart_button_for_main(self):
+    #     self._click(self.__main_page_locator.cart_button)
+    #     return self
 
     def click_login_button(self):
         self._click(self.__main_page_locator.login_button)
@@ -52,7 +49,7 @@ class MainPage(BasePage):
     def is_iphone_items_url_matches(self):
         return self._wait_until_url_matches(get_iphone_items_url())
 
-    def click_iphone_items_by_js(self):
+    def click_iphone_item(self):
         self._click_by_js(self.__main_page_locator.iphone_items_button)
         return self
 
@@ -65,3 +62,11 @@ class MainPage(BasePage):
 
     def is_contact_url_matches(self):
         return self._wait_until_url_matches(get_contact_url())
+
+    def is_main_page_url_matches(self):
+        return self._wait_until_url_matches(get_application_url())
+
+    def is_header_logout_button_exist(self):
+        element = self._wait_until_element_visible(self.__main_page_locator.header_logout_button)
+        return element.is_displayed()
+

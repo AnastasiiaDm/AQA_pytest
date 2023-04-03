@@ -11,19 +11,21 @@ class ManagerApplicationForm(BasePage):
     __phone_onfocus_attribute = "onfocus"
 
     def is_form_visible(self):
-        return self._wait_until_element_visible(self.__manager_form_locator.popup)
+        element = self._wait_until_element_visible(self.__manager_form_locator.popup)
+        return element.is_displayed()
 
     def is_phone_onfocus_exist(self):
         return self._find_attribute_in_locator(self.__manager_form_locator.phone_input, self.__phone_onfocus_attribute)
 
     def click_exit_button(self):
-        return self._click(self.__manager_form_locator.exit_button)
+        self._click(self.__manager_form_locator.exit_button)
+        return self
 
     def is_form_invisible(self):
         return self._wait_until_element_invisible(self.__manager_form_locator.popup)
 
-    def set_name_key(self, key: str):
-        self._send_keys(locator=self.__manager_form_locator.name_input, value=key)
+    def set_name_key(self, value: str):
+        self._send_keys(locator=self.__manager_form_locator.name_input, value=value)
         return self
 
     def set_phone_key(self, key: str):
@@ -46,13 +48,16 @@ class ManagerApplicationForm(BasePage):
         return self
 
     def is_name_invalid(self):
-        return self._wait_until_element_located(self.__manager_form_locator.name_invalid)
+        element = self._wait_until_element_located(self.__manager_form_locator.name_invalid)
+        return element.is_displayed()
 
     def is_phone_invalid(self):
-        return self._wait_until_element_located(self.__manager_form_locator.phone_invalid)
+        element = self._wait_until_element_located(self.__manager_form_locator.phone_invalid)
+        return element.is_displayed()
 
     def is_comment_invalid(self):
-        return self._wait_until_element_located(self.__manager_form_locator.comment_invalid)
+        element = self._wait_until_element_located(self.__manager_form_locator.comment_invalid)
+        return element.is_displayed()
 
     def are_required_fields_unfilled(self):
         self.is_name_invalid()

@@ -10,11 +10,9 @@ class LoginPageLocators:
         self.__google_sign_up_button = Locator(By.XPATH, "//*[@id='gp-link']")
         self.__forgot_password_button = Locator(By.XPATH, "//*[@class='lost_password form-group']/a")
 
-        self.__header_logout_button = Locator(By.XPATH, "//*[@class='header_user_info pull-right']//*[@class='logout']")
+
         self.__submit_sign_up_button = Locator(By.XPATH, "//*[@id='SubmitCreate']")
         self.__invalid_sign_up_alert = Locator(By.XPATH, "//*[@id='create_account_error']")
-        self.__recover_password_submit = Locator(By.XPATH, "//*[@class='btn btn-outline button button-medium btn-sm']")
-        self.__go_to_login_page_button = Locator(By.XPATH, "//*[@class='pull-left']")
 
     @property
     def submit_login_button(self):
@@ -44,14 +42,3 @@ class LoginPageLocators:
     def invalid_sign_up_alert(self):
         return self.__invalid_sign_up_alert.get_locator()
 
-    @property
-    def recover_password_submit(self):
-        return self.__recover_password_submit.get_locator()
-
-    @property
-    def go_to_login_page_button(self):
-        return self.__go_to_login_page_button.get_locator()
-
-    @property
-    def header_logout_button(self):
-        return self.__header_logout_button.get_locator()
