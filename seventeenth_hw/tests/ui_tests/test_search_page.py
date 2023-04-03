@@ -60,10 +60,9 @@ def test_is_compare_value_0(open_main_page):
 
 
 @pytest.mark.smoke
-def test_add_to_cart(open_main_page):
-    main_page = open_main_page
-    search = main_page.set_search_key(get_search_id_key()).click_search_submit().click_add_to_cart_button()
-    assert search.is_cart_popup_displayed, "Cart popup is not displayed"
+def test_add_to_cart(open_cart_page_with_item):
+    cart_page = open_cart_page_with_item
+    assert cart_page.is_cart_popup_displayed, "Cart popup is not displayed"
 
 
 @pytest.mark.smoke

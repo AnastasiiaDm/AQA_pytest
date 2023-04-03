@@ -10,7 +10,6 @@ class MainPageLocators:
         self.__cart_button = Locator(By.XPATH, "//*[@class='title-cart pull-right']")
         self.__login_button = Locator(By.XPATH, "//*[@class='login']")
 
-        # self.__alert_warning = Locator(By.XPATH, "//*[@class='alert alert-warning']")
         self.__header_logo = Locator(By.XPATH, "//*[@id='header_logo']")
         self.__iphone_items_button = Locator(By.XPATH,
                                              "//*[@class='submenu-level-0_18 sub fullwidth clearfix']//*[@title='iPhone']")
@@ -38,10 +37,6 @@ class MainPageLocators:
     @property
     def login_button(self):
         return self.__login_button.get_locator()
-
-    # @property
-    # def alert_warning(self):
-    #     return self.__alert_warning.get_locator()
 
     @property
     def header_logo(self):

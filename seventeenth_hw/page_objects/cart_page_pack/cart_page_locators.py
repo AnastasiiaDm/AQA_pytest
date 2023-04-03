@@ -17,6 +17,7 @@ class CartPageLocators:
         self.__invalid_discount_popup_inactive = Locator(By.XPATH,
                                                          "//*[@id='opc_modal'][contains(@style, 'display: none')]")
         self.__continue_shopping_button = Locator(By.XPATH, "//*[@class='continue']")
+        self.__cart_popup = Locator(By.XPATH, "//*[@id='layer_cart']/self::*[contains(@style, 'display: block')]")
 
     @property
     def empty_cart_video(self):
@@ -57,3 +58,7 @@ class CartPageLocators:
     @property
     def continue_shopping_button(self):
         return self.__continue_shopping_button.get_locator()
+
+    @property
+    def cart_popup(self):
+        return self.__cart_popup.get_locator()

@@ -7,14 +7,14 @@ class CartPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.__cart_locator = CartPageLocators()
-        # self.__main_locator = MainPageLocators()
 
     def is_exist_empty_cart_video_exist(self):
         element = self._wait_until_element_visible(self.__cart_locator.empty_cart_video)
         return element.is_displayed()
 
-    # def get_empty_cart_text(self):
-    #     return self._get_text(self.__main_locator.alert_warning)
+    def is_cart_popup_displayed(self):
+        element = self._wait_until_element_visible(self.__cart_locator.cart_popup)
+        return element.is_displayed()
 
     def click_home_button(self):
         from seventeenth_hw.page_objects.main_page_pack.main_page import MainPage

@@ -41,15 +41,18 @@ def open_cart_page_with_item(create_browser):
         click_cart_page_button()
     return CartPage(create_browser)
 
+
 @pytest.fixture()
 def open_empty_cart_page(create_browser):
     MainPage(create_browser).click_cart_button()
     return CartPage(create_browser)
 
+
 @pytest.fixture()
 def open_login_page(create_browser):
     MainPage(create_browser).click_login_button()
     return LoginPage(create_browser)
+
 
 @pytest.fixture()
 def open_manager_application_form(create_browser):

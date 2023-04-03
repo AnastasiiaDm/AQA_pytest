@@ -10,7 +10,6 @@ class LoginPageLocators:
         self.__google_sign_up_button = Locator(By.XPATH, "//*[@id='gp-link']")
         self.__forgot_password_button = Locator(By.XPATH, "//*[@class='lost_password form-group']/a")
 
-
         self.__submit_sign_up_button = Locator(By.XPATH, "//*[@id='SubmitCreate']")
         self.__invalid_sign_up_alert = Locator(By.XPATH, "//*[@id='create_account_error']")
 
@@ -41,4 +40,3 @@ class LoginPageLocators:
     @property
     def invalid_sign_up_alert(self):
         return self.__invalid_sign_up_alert.get_locator()
-

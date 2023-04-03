@@ -2,7 +2,6 @@ from seventeenth_hw.page_objects.cart_page_pack.cart_page import CartPage
 from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPageLocators
 from seventeenth_hw.page_objects.manager_application_form.manager_application_form import ManagerApplicationForm
 from seventeenth_hw.page_objects.search_page_pack.search_page_locators import SearchLocators
-from seventeenth_hw.utilities.config_reader import get_application_url
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
 
@@ -53,16 +52,6 @@ class SearchPage(BasePage):
         self._click(self.__search_locator.add_to_cart_button)
         return self
 
-    def is_cart_popup_displayed(self):
-        element = self._wait_until_element_visible(self.__search_locator.cart_popup)
-        return element.is_displayed()
-
     def click_cart_page_button(self):
         self._click(self.__search_locator.cart_page_button)
         return CartPage(self.browser)
-
-    # def add_item_and_open_cart_page(self):
-    #     self.click_add_to_cart_button()
-    #     self.click_cart_page_button()
-    #     return CartPage(self.browser)
-

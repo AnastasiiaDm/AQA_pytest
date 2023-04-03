@@ -38,10 +38,6 @@ class MainPage(BasePage):
         self._click(self.__main_page_locator.cart_button)
         return CartPage(self.browser)
 
-    # def click_cart_button_for_main(self):
-    #     self._click(self.__main_page_locator.cart_button)
-    #     return self
-
     def click_login_button(self):
         self._click(self.__main_page_locator.login_button)
         return LoginPage(self.browser)
@@ -69,4 +65,3 @@ class MainPage(BasePage):
     def is_header_logout_button_exist(self):
         element = self._wait_until_element_visible(self.__main_page_locator.header_logout_button)
         return element.is_displayed()
-
