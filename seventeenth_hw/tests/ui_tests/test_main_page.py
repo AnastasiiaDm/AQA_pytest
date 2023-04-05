@@ -10,13 +10,11 @@ Mark smoke test cases and regression Tcs
 """
 import pytest
 
-from seventeenth_hw.utilities.config_reader import get_search_key, get_invalid_search_key
-
 
 @pytest.mark.smoke
-def test_search_items_by_search_field(open_main_page):
+def test_search_items_by_search_field(open_main_page, env):
     main_page = open_main_page
-    search_page = main_page.set_search_key(get_search_key()).click_search_submit_for_main()
+    search_page = main_page.set_search_key(env.search_key).click_search_submit_for_main()
     assert search_page.is_search_result_counter_displayed(), 'Search result counter is not displayed'
     assert main_page.wait_until_warning_invisible(), 'Warning is displayed'
 
@@ -30,25 +28,25 @@ def test_search_no_items_by_search_field(open_main_page):
 
 
 @pytest.mark.regression
-def test_search_invalid_items_by_search_field(open_main_page):
+def test_search_invalid_items_by_search_field(open_main_page, env):
     main_page = open_main_page
-    search_page = main_page.set_search_key(get_invalid_search_key()).click_search_submit_for_main()
+    search_page = main_page.set_search_key(env.invalid_key).click_search_submit_for_main()
     assert search_page.wait_until_warning_visible(), 'Search page warning is not displayed'
     assert search_page.is_search_result_counter_invisible(), 'Search result counter is displayed'
 
 
 @pytest.mark.smoke
-def test_go_to_iphone_item_page(open_main_page):
+def test_go_to_iphone_item_page(open_main_page, env):
     main_page = open_main_page
     iphone_items = main_page.click_iphone_item()
-    assert iphone_items.is_iphone_items_url_matches(), "Url do not match"
+    assert iphone_items.is_page_url_matches(env.iphone_items_url), f"Url do not match {env.iphone_items_url}"
 
 
 @pytest.mark.smoke
-def test_go_to_contact_page(open_main_page):
+def test_go_to_contact_page(open_main_page, env):
     main_page = open_main_page
     contact_page = main_page.click_header_contact_button()
-    assert contact_page.is_contact_url_matches(), "Url do not match"
+    assert contact_page.is_page_url_matches(env.contact_url), f"Url do not match {env.contact_url}"
 
 
 @pytest.mark.smoke

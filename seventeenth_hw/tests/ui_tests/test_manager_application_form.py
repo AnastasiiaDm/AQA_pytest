@@ -1,8 +1,5 @@
 import pytest
 
-from seventeenth_hw.utilities.config_reader import get_manager_application_form_name_key, \
-    get_manager_application_form_phone_key, get_manager_application_form_text_key
-
 
 @pytest.mark.regression
 def test_exist_phone_onfocus(open_manager_application_form):
@@ -27,11 +24,9 @@ def test_submit_empty_fields(open_manager_application_form):
 
 
 @pytest.mark.smoke
-def test_send_message(open_manager_application_form):
+def test_send_message(open_manager_application_form, env):
     application_form = open_manager_application_form
-    fill_form = application_form.send_message(get_manager_application_form_name_key(),
-                                              get_manager_application_form_phone_key(),
-                                              get_manager_application_form_text_key())
+    fill_form = application_form.send_message(env.name_key, env.phone_key, env.text_key)
     # here might be assert fill_form.is_manager_application_form_popup_invisible() but I decided not to disturb operators
     assert fill_form.is_form_visible(), "Manager application form is not displayed"
 
