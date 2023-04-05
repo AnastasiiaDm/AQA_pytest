@@ -36,16 +36,14 @@ def open_main_page(create_browser):
 
 
 @pytest.fixture()
-def open_cart_page_with_item(create_browser):
-    MainPage(create_browser).set_search_key(get_search_id_key()).click_search_submit().click_add_to_cart_button(). \
+def open_cart_page_with_item(open_main_page):
+    return open_main_page.set_search_key(get_search_id_key()).click_search_submit().click_add_to_cart_button(). \
         click_cart_page_button()
-    return CartPage(create_browser)
 
 
 @pytest.fixture()
-def open_empty_cart_page(create_browser):
-    MainPage(create_browser).click_cart_button()
-    return CartPage(create_browser)
+def open_empty_cart_page(open_main_page):
+    return open_main_page.click_cart_button()
 
 
 @pytest.fixture()
