@@ -11,5 +11,6 @@
   "search_id_key": "00000037591-005",
   "name_key": "Tester",
   "phone_key": "0000000000",
-  "text_key": "test"
+  "text_key": "test",
+  "base_api_url": "https://maps.googleapis.com/maps/api"
 }
