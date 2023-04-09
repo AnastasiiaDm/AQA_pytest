@@ -37,6 +37,9 @@ class Human:
 
     @classmethod
     def convert_to_json_or_xml(cls, command, *args):
+        """
+        :param command: exact str needed: 'json' or 'xml' or 'xml_with_none'
+        """
         human = cls(*args)
         if command == 'json':
             json_data = human.convert_to_json()
