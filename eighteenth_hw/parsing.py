@@ -21,24 +21,16 @@ class Human:
     def convert_to_json(self):
         return json.dumps(self.__dict__)
 
-    def get_xml_text(self, data):
+    def convert_to_xml(self):
+        data = ET.Element('Human')
         for key, value in self.__dict__.items():
             ET.SubElement(data, key).text = str(value)
-
-    def convert_to_xml(self):
-        self.get_xml_text(data=ET.Element('Human'))
         return xmltodict.unparse({'Human': self.__dict__})
-
-    def convert_to_xml_with_none(self):
-        data = ET.Element('Human')
-        self.get_xml_text(data)
-        return ET.tostring(data, encoding='unicode', xml_declaration=True)
-        # return ET.tostring(data, encoding='unicode', method='xml')
 
     @classmethod
     def convert_to_json_or_xml(cls, command, *args):
         """
-        :param command: exact str needed: 'json' or 'xml' or 'xml_with_none'
+        :param command: exact str needed: 'json' or 'xml'
         """
         human = cls(*args)
         if command == 'json':
@@ -51,11 +43,6 @@ class Human:
             print(xml_data)
             with open('human.xml', 'w') as file:
                 file.write(xml_data)
-        elif command == 'xml_with_none':
-            xml_data = human.convert_to_xml_with_none()
-            print(xml_data)
-            with open('human_.xml', 'w') as file:
-                file.write(xml_data)
         else:
             print(f'Invalid command: {command}. Please enter "json" or "xml".')
 
@@ -63,4 +50,3 @@ class Human:
 if __name__ == '__main__':
     Human.convert_to_json_or_xml('xml', 'Yen', 95, 'female', None, False)
     Human.convert_to_json_or_xml('json', 'Yen', 95, 'female', None, False)
-    Human.convert_to_json_or_xml('xml_with_none', 'Yen', 95, 'female', None, False)
