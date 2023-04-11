@@ -1,6 +1,9 @@
+from contextlib import suppress
+from urllib import request
+
+import allure
 import pytest
 
-from seventeenth_hw.page_objects.cart_page_pack.cart_page import CartPage
 from seventeenth_hw.page_objects.login_page_pack.login_page import LoginPage
 from seventeenth_hw.page_objects.manager_application_form.manager_application_form import ManagerApplicationForm
 from seventeenth_hw.utilities.config_reader import get_application_url, get_browser_id, get_search_id_key
@@ -9,12 +12,25 @@ from seventeenth_hw.utilities.browser_factory import browser_factory
 from seventeenth_hw.page_objects.main_page_pack.main_page import MainPage
 
 
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return
+
+
 @pytest.fixture()
-def create_browser():
+def create_browser(request):
     browser = browser_factory(get_browser_id())
     browser.maximize_window()
     browser.get(get_application_url())
     yield browser
+    if request.node.rep_call.failed:
+        with suppress(Exception):
+            allure.attach(browser.get_screenshot_as_png(),
+                          name=request.function.__name__,
+                          attachment_type=allure.attachment_type.PNG)
     browser.quit()
 
 

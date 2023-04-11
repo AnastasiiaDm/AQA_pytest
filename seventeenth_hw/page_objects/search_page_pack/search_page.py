@@ -4,7 +4,10 @@ from seventeenth_hw.page_objects.manager_application_form.manager_application_fo
 from seventeenth_hw.page_objects.search_page_pack.search_page_locators import SearchLocators
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
+
+@allure_step
 class SearchPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
