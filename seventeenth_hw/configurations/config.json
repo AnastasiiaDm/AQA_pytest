@@ -1,0 +1,16 @@
+{
+  "app_url": "https://skay.ua/uk/",
+  "iphone_items_url": "https://skay.ua/uk/163-iphone/",
+  "contact_url": "https://skay.ua/uk/contact-us/",
+  "cart_url": "https://skay.ua/uk/quick-order/",
+  "email": "tt266744@gmail.com",
+  "password": "qwerasdf1",
+  "browser_id": 1,
+  "search_key": "iPhone",
+  "invalid_key": "djjdfjhjknsdk",
+  "search_id_key": "00000037591-005",
+  "name_key": "Tester",
+  "phone_key": "0000000000",
+  "text_key": "test",
+  "base_api_url": "https://maps.googleapis.com/maps/api"
+}
