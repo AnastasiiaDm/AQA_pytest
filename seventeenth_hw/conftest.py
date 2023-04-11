@@ -21,22 +21,17 @@ def env():
     config = json.loads(response)
     return Configuration(**config)
 
+
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
     rep = outcome.get_result()
     setattr(item, "rep_" + rep.when, rep)
-    return
-# @pytest.fixture()
-# def create_browser(pytestconfig):
-#     browser = browser_factory(int(pytestconfig.getoption('--browser_id')))
-#     browser.maximize_window()
-#     browser.get(get_application_url())
-#     yield browser
-#     browser.quit()
+    return rep
+
 
 @pytest.fixture()
-def create_browser(env):
+def create_browser(env, request):
     browser = browser_factory(int(env.browser_id))
     browser.maximize_window()
     browser.get(env.app_url)

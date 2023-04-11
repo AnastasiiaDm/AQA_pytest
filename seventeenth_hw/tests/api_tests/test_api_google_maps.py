@@ -20,7 +20,7 @@ def test_get_place_api_status_request_denied(env, place_mock):
 
 
 @pytest.mark.smoke
-@pytest.xfail
+# @pytest.xfail
 def test_get_place_api_status_ok(env):
     response = FindPlaceAPI(env).get_place('json')
     response_status = re.search('"status"\s:\s"(.*)"', response.text)
