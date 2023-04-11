@@ -1,3 +1,6 @@
+import json
+
+
 class PlaceData:
     def __init__(self, **kwargs):
         self.candidates = [] if "candidates" not in kwargs.keys() else kwargs['candidates']
@@ -12,3 +15,12 @@ class PlaceData:
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
+
+    def get_json(self):
+        return json.dumps(self.__dict__)
+
+    def update_data(self, **kwargs):
+        self.__dict__.update(**kwargs)
+
+    def get_dict(self):
+        return self.__dict__
