@@ -1,7 +1,5 @@
 import pytest
 
-from seventeenth_hw.utilities.config_reader import get_user_creds
-
 
 @pytest.mark.smoke
 def test_login_page(open_login_page):
@@ -16,9 +14,9 @@ def test_is_google_sign_up_button_exist(open_login_page):
 
 
 @pytest.mark.smoke
-def test_authorize(open_login_page):
+def test_authorize(open_login_page, env):
     login_page = open_login_page
-    authorize = login_page.authorize(get_user_creds()[0], get_user_creds()[1])
+    authorize = login_page.authorize(env.email, env.password)
     assert authorize.is_header_logout_button_exist(), "User not authorized"
 
 

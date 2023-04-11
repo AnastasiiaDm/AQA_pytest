@@ -52,6 +52,5 @@ class BasePage:
     def wait_until_warning_invisible(self):
         return self._wait_until_element_invisible(self.__base_page_locator.alert_warning)
 
-    # @allure.step
-    # def is_main_page_url_matches(self):
-    #     return self._wait_until_url_matches(get_application_url())
+    def is_page_url_matches(self, env):
+        return self._wait_until_url_matches(env)
