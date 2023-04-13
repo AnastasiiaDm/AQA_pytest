@@ -1,0 +1,15 @@
+* Install postgresql or other SQL System :
+
+* Change password for user postgres
+
+* Create Data Base store
+
+* Create table products with columns (id, name, price)
+
+* Create table orders with columns (id, product_id, quantity)
+
+* Add 5 different values to products
+
+* Add 5 different values to orders according to your products
+
+* Create select with the result with such columns (name, price, quantity, total)
