@@ -32,7 +32,7 @@ def test_send_message(open_manager_application_form, env):
 
 
 @pytest.mark.regression
-@pytest.mark.xfail
+# @pytest.mark.xfail
 def test_exist_name_text_uk(open_manager_application_form):
     application_form = open_manager_application_form
     actual_text = application_form.get_name_text()
@@ -40,7 +40,7 @@ def test_exist_name_text_uk(open_manager_application_form):
 
 
 @pytest.mark.regression
-@pytest.mark.xfail
+# @pytest.mark.xfail
 def test_exist_phone_text_uk(open_manager_application_form):
     application_form = open_manager_application_form
     actual_text = application_form.get_phone_text()
@@ -48,7 +48,7 @@ def test_exist_phone_text_uk(open_manager_application_form):
 
 
 @pytest.mark.regression
-@pytest.mark.xfail
+# @pytest.mark.xfail
 def test_exist_comment_text_uk(open_manager_application_form):
     application_form = open_manager_application_form
     actual_text = application_form.get_comment_text()

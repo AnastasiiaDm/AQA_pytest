@@ -4,11 +4,17 @@ from seventeenth_hw.page_objects.main_page_pack.main_page_locators import MainPa
 from seventeenth_hw.page_objects.search_page_pack.search_page import SearchPage
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
+from seventeenth_hw.utilities.web_ui.base_page_locators import BasePageLocators
+import allure
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
+
+@allure_step
 class MainPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
         self.__main_page_locator = MainPageLocators()
+        self.__base_page_locator = BasePageLocators()
 
     def set_search_key(self, key: str):
         self._send_keys(locator=self.__main_page_locator.search_input, value=key)
@@ -30,7 +36,7 @@ class MainPage(BasePage):
         return self._wait_until_element_invisible(self.__main_page_locator.search_result_counter)
 
     def is_warning_displayed(self):
-        element = self._wait_until_element_visible(self.__main_page_locator.alert_warning)
+        element = self._wait_until_element_visible(self.__base_page_locator.alert_warning)
         return element.is_displayed()
 
     def click_cart_button(self):
@@ -40,6 +46,9 @@ class MainPage(BasePage):
     def click_login_button(self):
         self._click(self.__main_page_locator.login_button)
         return LoginPage(self.browser)
+
+    def is_iphone_items_url_matches(self, env):
+        return self._wait_until_url_matches(env.iphone_items_url)
 
     def click_iphone_item(self):
         self._click_by_js(self.__main_page_locator.iphone_items_button)
@@ -51,6 +60,12 @@ class MainPage(BasePage):
     def click_header_contact_button(self):
         self._click(self.__main_page_locator.header_contact_button)
         return self
+
+    def is_contact_url_matches(self, env):
+        return self._wait_until_url_matches(env.contact_url)
+
+    def is_main_page_url_matches(self, env):
+        return self._wait_until_url_matches(env.app_url)
 
     def is_header_logout_button_exist(self):
         element = self._wait_until_element_visible(self.__main_page_locator.header_logout_button)

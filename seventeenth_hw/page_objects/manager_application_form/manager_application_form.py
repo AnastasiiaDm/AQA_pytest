@@ -1,8 +1,10 @@
 from seventeenth_hw.page_objects.manager_application_form.manager_application_form_locators import \
     ManagerApplicationFormLocators
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
 
+@allure_step
 class ManagerApplicationForm(BasePage):
     def __init__(self, browser):
         super().__init__(browser)

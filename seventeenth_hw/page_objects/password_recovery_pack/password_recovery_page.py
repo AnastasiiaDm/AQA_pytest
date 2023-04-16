@@ -2,7 +2,10 @@ from seventeenth_hw.page_objects.password_recovery_pack.password_recovery_page_l
     PasswordRecoveryPageLocators
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
 
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
+
+@allure_step
 class PasswordRecoveryPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)

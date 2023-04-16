@@ -1,7 +1,9 @@
 from seventeenth_hw.page_objects.cart_page_pack.cart_page_locators import CartPageLocators
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
 
+@allure_step
 class CartPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)

@@ -1,7 +1,9 @@
 from seventeenth_hw.page_objects.login_page_pack.login_page_locators import LoginPageLocators
 from seventeenth_hw.utilities.web_ui.base_page import BasePage
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
 
+@allure_step
 class LoginPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
@@ -45,7 +47,3 @@ class LoginPage(BasePage):
     def is_invalid_sign_up_alert_visible(self):
         element = self._wait_until_element_visible(self.__login_locator.invalid_sign_up_alert)
         return element.is_displayed()
-
-
-
-

@@ -1,5 +1,8 @@
 import json
+from urllib import request
+from contextlib import suppress
 
+import allure
 import pytest
 
 from constants import ROOT_DIR
@@ -19,20 +22,25 @@ def env():
     return Configuration(**config)
 
 
-# @pytest.fixture()
-# def create_browser():
-#     browser = browser_factory(get_browser_id())
-#     browser.maximize_window()
-#     browser.get(get_application_url())
-#     yield browser
-#     browser.quit()
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return rep
+
 
 @pytest.fixture()
-def create_browser(env):
+def create_browser(env, request):
     browser = browser_factory(int(env.browser_id))
     browser.maximize_window()
     browser.get(env.app_url)
     yield browser
+    if request.node.rep_call.failed:
+        with suppress(Exception):
+            allure.attach(browser.get_screenshot_as_png(),
+                          name=request.function.__name__,
+                          attachment_type=allure.attachment_type.PNG)
     browser.quit()
 
 

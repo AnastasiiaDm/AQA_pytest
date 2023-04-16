@@ -1,7 +1,9 @@
 from seventeenth_hw.data_objecs.place_data import PlaceData
 from seventeenth_hw.utilities.api.base_api import BaseAPI
+from seventeenth_hw.utilities.web_ui.decorators import allure_step
 
 
+@allure_step
 class FindPlaceAPI(BaseAPI):
     def __init__(self, env):
         super().__init__(env)
