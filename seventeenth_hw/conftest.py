@@ -1,5 +1,5 @@
 import json
-from urllib import request
+import mysql.connector
 from contextlib import suppress
 
 import allure
@@ -12,6 +12,7 @@ from seventeenth_hw.utilities.browser_factory import browser_factory
 
 from seventeenth_hw.page_objects.main_page_pack.main_page import MainPage
 from seventeenth_hw.utilities.configuration import Configuration
+from twenty_second_hw.db_repo.products_repository import ProductsRepository
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -75,6 +76,19 @@ def open_login_page(create_browser):
 def open_manager_application_form(create_browser):
     MainPage(create_browser).click_search_submit().click_manager_application_button()
     return ManagerApplicationForm(create_browser)
+
+
+@pytest.fixture()
+def create_db_store_connection(env):
+    __connection = mysql.connector.connect(
+        user=env.db_user,
+        password=env.db_password,
+        database=env.store_database)
+    __cursor = __connection.cursor()
+    yield __connection, __cursor
+    if __connection:
+        __cursor.close()
+        __connection.close()
 
 
 def pytest_configure(config):
