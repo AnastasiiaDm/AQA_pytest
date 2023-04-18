@@ -1,0 +1,57 @@
+* Install MySql :
+brew install mysql
+
+** Start MySql :
+brew services start mysql
+
+** Enter MySql by root :
+mysql -u root
+
+** Create MySql user :
+CREATE USER mysql_user@ IDENTIFIED BY “1111”;
+
+** Give rights to user :
+GRANT ALL ON *.* TO mysql_user@;
+
+** Exit MuSql :
+exit
+
+** Login by user :
+mysql -u mysql_user -p1111
+
+* Change password for user MySql :
+alter user mysql_user@ IDENTIFIED BY '2222';
+** reload tables with new changes:
+FLUSH PRIVILEGES;
+
+* Create Data Base store
+create database test_aqa;
+
+** Switch to Data Base :
+use test_aqa;
+
+* Create table products with columns (id, name, price) :
+create table products(
+id int not null AUTO_INCREMENT,
+name varchar(25) not null,
+price FLOAT null,
+primary key (id)
+);
+
+* Create table orders with columns (id, product_id, quantity)
+create table orders (
+id int not null AUTO_INCREMENT,
+product_id int not null,
+quantity int not null,
+primary key (id),
+foreign key (product_id) references products(id));
+
+* Add 5 different values to products
+insert into products (name, price) values ("iPhone", 1300.99), ("MacBook", 2000), (“AirPods”, 200.01), (“Apple Watch”, 500), (“iPad”, 700);
+
+* Add 5 different values to orders according to your products
+insert into orders (product_id, quantity) values (1, 100), (5, 2), (2, 500), (4, 70), (3, 200);
+
+* Create select with the result with such columns (name, price, quantity, total)
+select p.name, p.price, o.quantity, format(p.price * o.quantity, 2) as total
+from products as p join orders as o on p.id = o.product_id;
