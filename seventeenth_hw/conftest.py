@@ -6,6 +6,7 @@ import allure
 import pytest
 
 from constants import ROOT_DIR
+from seventeenth_hw.mongo_db_repo.alternate_signs_collection import AlternateSigns
 from seventeenth_hw.page_objects.login_page_pack.login_page import LoginPage
 from seventeenth_hw.page_objects.manager_application_form.manager_application_form import ManagerApplicationForm
 from seventeenth_hw.utilities.browser_factory import browser_factory
@@ -75,6 +76,11 @@ def open_login_page(create_browser):
 def open_manager_application_form(create_browser):
     MainPage(create_browser).click_search_submit().click_manager_application_button()
     return ManagerApplicationForm(create_browser)
+
+
+@pytest.fixture()
+def get_alternate_signs_col():
+    return AlternateSigns.get_col()
 
 
 def pytest_configure(config):

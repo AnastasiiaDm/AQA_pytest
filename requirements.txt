@@ -7,3 +7,4 @@ xmltodict==0.13.0
 allure-pytest==2.13.1
 
 
+pymongo==4.3.3

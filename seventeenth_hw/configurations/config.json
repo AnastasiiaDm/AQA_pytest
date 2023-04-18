@@ -12,5 +12,10 @@
   "name_key": "Tester",
   "phone_key": "0000000000",
   "text_key": "test",
-  "base_api_url": "https://maps.googleapis.com/maps/api"
+  "base_api_url": "https://maps.googleapis.com/maps/api",
+  "face_dict": {"face_key": "face_value"},
+  "face_list_of_dicts": [{"face_key": "face_value"}, {"face_key": "face_value"}],
+  "sta_cost_update": {"$set": {"sta_cost": "Variable"}},
+  "sta_cost_unset": {"$unset": {"sta_cost": ""}},
+  "sign_name": {"name": "Fire Stream"}
 }
