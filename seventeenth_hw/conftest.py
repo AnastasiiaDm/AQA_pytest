@@ -12,7 +12,7 @@ from seventeenth_hw.utilities.browser_factory import browser_factory
 
 from seventeenth_hw.page_objects.main_page_pack.main_page import MainPage
 from seventeenth_hw.utilities.configuration import Configuration
-from twenty_second_hw.db_repo.products_repository import ProductsRepository
+# from twenty_second_hw.db_repo.products_repository import ProductsRepository
 
 
 @pytest.fixture(scope='session', autouse=True)
