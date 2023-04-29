@@ -12,5 +12,10 @@
   "name_key": "Tester",
   "phone_key": "0000000000",
   "text_key": "test",
-  "base_api_url": "https://maps.googleapis.com/maps/api"
+  "base_api_url": "https://maps.googleapis.com/maps/api",
+  "db_user": "mysql_user",
+  "db_password": "2222",
+  "store_database": "store",
+  "db_test_products_table_name": "test_products",
+  "db_test_order_table_name": "test_order"
 }
