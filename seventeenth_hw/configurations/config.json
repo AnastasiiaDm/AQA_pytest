@@ -18,4 +18,9 @@
   "sta_cost_update": {"$set": {"sta_cost": "Variable"}},
   "sta_cost_unset": {"$unset": {"sta_cost": ""}},
   "sign_name": {"name": "Fire Stream"}
+  "db_user": "mysql_user",
+  "db_password": "2222",
+  "store_database": "store",
+  "db_test_products_table_name": "test_products",
+  "db_test_order_table_name": "test_order"
 }
