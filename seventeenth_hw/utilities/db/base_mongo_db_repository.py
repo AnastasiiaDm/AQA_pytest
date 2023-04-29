@@ -3,13 +3,12 @@ class BaseMongoDbRepository:
         self.collection = collection
 
     def _find_one(self, input_data):
-        find = self.collection.find_one(input_data)
-        print(find)
+        return self.collection.find_one(input_data)
 
     def _find_by(self, input_data):
         find = self.collection.find(input_data)
         for result in find:
-            print(result)
+            return result
 
     def _insert_one(self, input_data):
         self.collection.insert_one(input_data)
