@@ -16,7 +16,7 @@ def browser_factory(browser_id: int):
         chrome_options = Options()
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
-        return Chrome(service=chrome_service(ChromeDriverManager().install()))
+        return Chrome(service=chrome_service(ChromeDriverManager().install()), options=chrome_options)
     if int(browser_id) == __FIREFOX:
         return Firefox(service=firefox_service(GeckoDriverManager().install()))
     else:
