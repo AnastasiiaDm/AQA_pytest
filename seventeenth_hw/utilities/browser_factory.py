@@ -15,8 +15,7 @@ def browser_factory(browser_id: int):
     if int(browser_id) == __CHROME:
         chrome_options = Options()
         chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--disable-setuid-sandbox")
-        chrome_options.add_argument("--user-data-dir=/root")
+        chrome_options.add_argument("--disable-gpu")
 
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
