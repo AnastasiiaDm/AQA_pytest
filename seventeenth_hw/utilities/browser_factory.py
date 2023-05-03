@@ -14,13 +14,30 @@ __FIREFOX = 2
 def browser_factory(browser_id: int):
     if int(browser_id) == __CHROME:
         chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        return Chrome(service=chrome_service(ChromeDriverManager().install()), options=chrome_options)
+        # chrome_options.add_argument("--disable-extensions")
+
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        # chrome_options.add_argument("--disable-setuid-sandbox")
+        # chrome_options.add_argument("--user-data-dir=/code")
+
+        # chrome_options.add_argument("--force-device-scale-factor=2.0")
+        chrome_options.add_argument("--window-size=1920,1080")
+        # chrome_options.add_argument('--start-maximized')
+
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+
+
+
+        return Chrome(service=chrome_service('/usr/bin/chromedriver'), options=chrome_options)
+
+        # return Chrome(service=chrome_service(ChromeDriverManager().install()), options=chrome_options)
     if int(browser_id) == __FIREFOX:
         return Firefox(service=firefox_service(GeckoDriverManager().install()))
     else:
         return Chrome(service=chrome_service(ChromeDriverManager().install()))
+
 
 #
 # class Chrome:

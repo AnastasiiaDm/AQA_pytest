@@ -26,6 +26,7 @@ class BasePage:
 
     def _send_keys(self, locator, value, is_clear=True):
         element = self._wait_until_element_located(locator)
+        # self.browser.save_screenshot("image.png")
         if is_clear:
             element.clear()
         element.send_keys(value)
