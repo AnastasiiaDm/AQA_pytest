@@ -23,7 +23,7 @@ def browser_factory(browser_id: int):
     if int(browser_id) == __FIREFOX:
         return Firefox(service=firefox_service(GeckoDriverManager().install()))
     else:
-        return Chrome(service=chrome_service(ChromeDriverManager().install()), options=chrome_options)
+        return Chrome(service=chrome_service(ChromeDriverManager().install()))
 
 #
 # class Chrome:
